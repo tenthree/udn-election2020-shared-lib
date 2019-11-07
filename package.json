@@ -1,0 +1,66 @@
+{
+  "name": "udn-election2020-shared-lib",
+  "version": "0.0.1",
+  "description": "A simple wrapper for the intersection observe api",
+  "main": "dist/udn-election2020-shared-lib.umd.js",
+  "module": "dist/udn-election2020-shared-lib.esm.js",
+  "unpkg": "dist/udn-election2020-shared-lib.min.js",
+  "browser": {
+    "./sfc": "src/lib.js"
+  },
+  "files": [
+    "dist/*",
+    "src/*"
+  ],
+  "style": "dist/udn-election2020-shared-lib.min.css",
+  "scripts": {
+    "backup": "node config/backup.js",
+    "serve": "vue-cli-service serve",
+    "build": "npm run build:esm && npm run build:umd && npm run build:iife",
+    "build:esm": "rollup --config config/rollup.config.esm.js",
+    "build:umd": "rollup --config config/rollup.config.umd.js",
+    "build:iife": "rollup --config config/rollup.config.iife.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "tenthree",
+    "email": "ten.three@hotmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tenthree/udn-election2020-shared-lib"
+  },
+  "bugs": "https://github.com/tenthree/udn-election2020-shared-lib/issues",
+  "homepage": "https://github.com/tenthree/udn-election2020-shared-lib#readme",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "plugin"
+  ],
+  "devDependencies": {
+    "@vue/cli-service": "^4.0.5",
+    "archiver": "^3.1.1",
+    "clear": "^0.1.0",
+    "rollup": "^1.21.2",
+    "rollup-plugin-alias": "^2.0.0",
+    "rollup-plugin-analyzer": "^3.2.2",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-css-only": "^1.0.0",
+    "rollup-plugin-filesize": "^6.2.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "rollup-plugin-vue": "^5.0.1",
+    "sass": "^1.22.10",
+    "sass-loader": "^8.0.0",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "current-device": "^0.9.1",
+    "detect-inapp": "^1.4.0"
+  }
+}

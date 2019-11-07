@@ -1,0 +1,78 @@
+// --------------------------------------------------
+// RWD media query generator
+// --------------------------------------------------
+@mixin rwd ($device) {
+  @media only screen and (#{$device}) {
+    @content;
+  }
+}
+
+// --------------------------------------------------
+// inject pseudo element ":before" for vertical-align
+// --------------------------------------------------
+@mixin use-vertical-align ($align: middle) {
+  @if ($align == "none") {
+    &:before {
+      content: normal;
+      width: auto;
+      height: auto;
+    }
+  } @else {
+    &:before {
+      content: "";
+      display: inline-block;
+      width: 0;
+      height: 100%;
+      vertical-align: $align;
+    }
+  }
+}
+
+// --------------------------------------------------
+// inject pseudo element ":before" for vertical-align
+// --------------------------------------------------
+@mixin use-fixed-ratio ($width: none, $height: none) {
+  @if ($width == "none") {
+    &:before {
+      content: normal;
+      display: inline;
+      padding: 0;
+    }
+  } @else if ($width != "none") and ($height == "none") {
+    &:before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 0;
+      padding-top: 100%;
+    }
+  } @else {
+    &:before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 0;
+      padding-top: ($height / $width) * 100%;
+    }
+  }
+}
+
+// --------------------------------------------------
+// apply multi-formats blur for browsers compatibility
+// --------------------------------------------------
+@mixin use-filter-blur($radius: 4) {
+  // filter: url("data:image/svg+xml;utf8,<svg height=\"0\" xmlns=\"http://www.w3.org/2000/svg\"><filter id=\"svg-filter-blur\" x=\"-5%\" y=\"-5%\" width=\"110%\" height=\"110%\"><feGaussianBlur in=\"SourceGraphic\" stdDeviation=\"#{$radius}\"/></filter></svg>#svg-filter-blur");
+  filter: url("data:image/svg+xml;utf-8;base64,PHN2ZyBoZWlnaHQ9IjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGZpbHRlciBpZD0ic3ZnLWZpbHRlci1ibHVyIiB4PSItNSUiIHk9Ii01JSIgd2lkdGg9IjExMCUiIGhlaWdodD0iMTEwJSI+PGZlR2F1c3NpYW5CbHVyIGluPSJTb3VyY2VHcmFwaGljIiBzdGREZXZpYXRpb249IjQiLz48L2ZpbHRlcj48L3N2Zz4=#svg-filter-blur");
+  filter: blur(#{$radius}px);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius="#{$radius}");
+}
+
+// --------------------------------------------------
+// auto inject z-index from $AUTO_LAYERS in variables.scss
+// --------------------------------------------------
+@mixin use-layer($self) {
+  @if not index($AUTO_LAYERS, "#{$self}") {
+    @error "#{$self} is not defined in $AUTO_LAYERS."
+  }
+  z-index: index($AUTO_LAYERS, "#{$self}")
+}

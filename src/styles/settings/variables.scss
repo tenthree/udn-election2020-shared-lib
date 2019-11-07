@@ -1,0 +1,30 @@
+// --------------------------------------------------
+// RWD devices information
+// --------------------------------------------------
+$RWD_MOBILE: "min-width: 0";
+$RWD_MOBILE_ONLY: "max-width: 519px";
+$RWD_TABLET_SMALL: "min-width: 520px";
+$RWD_TABLET: "min-width: 760px";
+$RWD_DESKTOP: "min-width: 960px";
+$RWD_DESKTOP_WIDE: "min-width: 1280px";
+
+$RWD_IPHONE_678: "min-width: 375px";
+$RWD_DESKTOP_WIDE_1440: "min-width: 1440px";
+$RWD_DESKTOP_WIDE_1660: "min-width: 1660px";
+
+// --------------------------------------------------
+// Generate z-index automatically in order with "@use-layer" mixin
+// --------------------------------------------------
+$AUTO_LAYERS: (
+  // footer
+  ".the-footer",
+  // home
+  ".youth-scene",
+  ".youth-articles",
+  // main
+  "",
+  ".article__view",
+  // common
+  ".the-udn-logo",
+  ".the-menu"
+)
