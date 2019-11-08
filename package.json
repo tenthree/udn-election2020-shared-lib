@@ -1,5 +1,5 @@
 {
-  "name": "udn-election2020-shared-lib",
+  "name": "@tenthree/udn-election2020-shared-lib",
   "version": "0.0.1",
   "description": "A simple wrapper for the intersection observe api",
   "main": "dist/udn-election2020-shared-lib.umd.js",
