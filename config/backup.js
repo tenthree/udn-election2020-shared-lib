@@ -17,9 +17,11 @@ const now = ((time) => ({
   ss: time.getSeconds().toString().padStart(2, '0')
 }))(new Date())
 
+const PKG_NAME = pkg.name.split('/').pop()
+
 const BACKUP_VERSION = `${now.yyyy.substr(1)}.${now.mm}${now.dd}.${now.hh}${now.ii}.${now.ss}s`
 
-const BACKUP_FILE = `../backup/${pkg.name}.${BACKUP_VERSION}.zip`
+const BACKUP_FILE = `../backup/${PKG_NAME}.${BACKUP_VERSION}.zip`
 
 const PROJECT_ROOT = path.resolve(__dirname, './')
 
@@ -97,7 +99,7 @@ globby(patterns)
     files.forEach(file => {
       archive.file(file, {
         cwd: PROJECT_ROOT,
-        prefix: pkg.name
+        prefix: PKG_NAME
       })
     })
     archive.finalize()

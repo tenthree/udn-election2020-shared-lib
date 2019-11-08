@@ -2,12 +2,13 @@ import { name } from '../package.json'
 import base from './rollup.config.base'
 import { terser } from 'rollup-plugin-terser'
 
+const pkgName = name.split('/').pop()
 const format = 'iife'
-const file = `dist/${name}.min.js`
+const file = `dist/${pkgName}.min.js`
 
 const output = {
   ...base.output,
-  name: name.replace(/-([a-z])/g, (g) => g[1].toUpperCase()),
+  name: pkgName.replace(/-([a-z])/g, (g) => g[1].toUpperCase()),
   format,
   file,
   exports: 'named'

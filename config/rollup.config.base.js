@@ -11,8 +11,10 @@ import analyzer from 'rollup-plugin-analyzer'
 import filesize from 'rollup-plugin-filesize'
 import autoprefixer from 'autoprefixer'
 
+const pkgName = name.split('/').pop()
+
 const banner = `/*!
- * ${name} v${version}
+ * ${pkgName} v${version}
  * @license ${license}
  * ${repository.url}
  */`
