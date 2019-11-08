@@ -1,12 +1,12 @@
 /*!
- * udn-election2020-shared-lib v0.0.1
+ * udn-election2020-shared-lib v0.0.2
  * @license MIT
  * https://github.com/tenthree/udn-election2020-shared-lib
  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('current-device'), require('detect-inapp')) :
   typeof define === 'function' && define.amd ? define(['current-device', 'detect-inapp'], factory) :
-  (global = global || self, global['udn-election2020-shared-lib'] = factory(global.device, global.inapp));
+  (global = global || self, global.udnElection2020SharedLib = factory(global.device, global.inapp));
 }(this, function (device, DetectInApp) { 'use strict';
 
   device = device && device.hasOwnProperty('default') ? device['default'] : device;
@@ -843,7 +843,7 @@
     return format$1(value)
   };
 
-  var version = '0.0.1';
+  var version = '0.0.2';
 
   var namespace = '';
 

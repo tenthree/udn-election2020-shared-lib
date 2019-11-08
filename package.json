@@ -1,7 +1,7 @@
 {
   "name": "@tenthree/udn-election2020-shared-lib",
-  "version": "0.0.1",
-  "description": "A simple wrapper for the intersection observe api",
+  "version": "0.0.2",
+  "description": "vue components shared library for election 2020 topics development",
   "main": "dist/udn-election2020-shared-lib.umd.js",
   "module": "dist/udn-election2020-shared-lib.esm.js",
   "unpkg": "dist/udn-election2020-shared-lib.min.js",
