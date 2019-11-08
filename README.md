@@ -17,10 +17,10 @@ npm install @tenthree/udn-election2020-shared-lib
 import Vue from 'vue'
 
 // import style
-import 'udn-election2020-shared-lib/dist/udn-election2020-shared-lib.min.css'
+import '@tenthree/udn-election2020-shared-lib/dist/udn-election2020-shared-lib.min.css'
 
 // import vue plugin
-import Election2020 from 'udn-election2020-shared-lib'
+import Election2020 from '@tenthree/udn-election2020-shared-lib'
 
 Vue.use(Election2020)
 

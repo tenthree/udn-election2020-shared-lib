@@ -1,5 +1,5 @@
 /*!
- * udn-election2020-shared-lib v0.0.3
+ * udn-election2020-shared-lib v0.0.4
  * @license MIT
  * https://github.com/tenthree/udn-election2020-shared-lib
  */
@@ -837,7 +837,7 @@ var percentage = function (value) {
   return format$1(value)
 };
 
-var version = 'v0.0.3';
+var version = 'v0.0.4';
 
 var namespace = '';
 
