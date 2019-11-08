@@ -20,7 +20,7 @@ npm run build
 
 ### install
 ```
-npm install udn-election2020-shared-lib
+npm install @tenthree/udn-election2020-shared-lib
 ```
 
 ### Example
