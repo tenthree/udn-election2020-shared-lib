@@ -1,20 +1,6 @@
 # udn-election2020-shared-lib
+
 > vue components shared library for election 2020 topics development
-
-## Project setup
-```
-npm install
-```
-
-### for development
-```
-npm run serve
-```
-
-### for distribution
-```
-npm run build
-```
 
 ## Usage
 
@@ -23,7 +9,8 @@ npm run build
 npm install @tenthree/udn-election2020-shared-lib
 ```
 
-### Example
+### example
+
 * main.js
 
 ```js
@@ -33,9 +20,9 @@ import Vue from 'vue'
 import 'udn-election2020-shared-lib/dist/udn-election2020-shared-lib.min.css'
 
 // import vue plugin
-import UdnElection2020SharedLib from 'udn-election2020-shared-lib'
+import Election2020 from 'udn-election2020-shared-lib'
 
-Vue.use(UdnElection2020SharedLib)
+Vue.use(Election2020)
 
 new Vue({
   render: h => h(App)
@@ -43,8 +30,8 @@ new Vue({
 ```
 
 * App.vue
-```html
 
+```html
 <template>
   <div id="app" class="app">
     <!-- TheUdnLogo -->
@@ -53,6 +40,7 @@ new Vue({
       title="關鍵選民"
       target="_blank"
       color="#1a1a1a"/>
+
     <!-- TheMenu -->
     <TheMenu
       project-id="youth"

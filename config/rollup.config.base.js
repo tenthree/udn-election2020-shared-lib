@@ -86,7 +86,8 @@ export default {
   input: 'src/lib.js',
   output: {
     banner,
-    globals
+    globals,
+    sourcemap: true
   },
   plugins,
   watch,

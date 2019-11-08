@@ -1,13 +1,13 @@
 /*!
- * udn-election2020-shared-lib v0.0.2
+ * udn-election2020-shared-lib v0.0.3
  * @license MIT
  * https://github.com/tenthree/udn-election2020-shared-lib
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('current-device'), require('detect-inapp')) :
-  typeof define === 'function' && define.amd ? define(['current-device', 'detect-inapp'], factory) :
-  (global = global || self, global.udnElection2020SharedLib = factory(global.device, global.inapp));
-}(this, function (device, DetectInApp) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('current-device'), require('detect-inapp')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'current-device', 'detect-inapp'], factory) :
+  (global = global || self, factory(global.udnElection2020SharedLib = {}, global.device, global.inapp));
+}(this, function (exports, device, DetectInApp) { 'use strict';
 
   device = device && device.hasOwnProperty('default') ? device['default'] : device;
   DetectInApp = DetectInApp && DetectInApp.hasOwnProperty('default') ? DetectInApp['default'] : DetectInApp;
@@ -843,7 +843,7 @@
     return format$1(value)
   };
 
-  var version = '0.0.2';
+  var version = 'v0.0.3';
 
   var namespace = '';
 
@@ -866,6 +866,8 @@
   }
 
   function install (Vue, options) {
+    if ( options === void 0 ) options = {};
+
     if (install.installed) {
       return
     }
@@ -873,20 +875,31 @@
     Vue.device = Vue.prototype.$device = device;
     Vue.inApp = Vue.prototype.$inApp = new DetectInApp(window.navigator.userAgent);
     Vue.ga = Vue.prototype.$ga = ga;
-    registerComponents(Vue, [ TheUdnLogo, TheMenu ]);
-    registerDirectives(Vue, [ inview, lockscroll ]);
-    registerFilters(Vue, [ numeric, percentage ]);
+    var register = options.register; if ( register === void 0 ) register = true;
+    if (register) {
+      registerComponents(Vue, [ TheUdnLogo, TheMenu, SvgInlineResource, SvgSymbol ]);
+      registerDirectives(Vue, [ inview, lockscroll ]);
+      registerFilters(Vue, [ numeric, percentage ]);
+    }
   }
 
   var plugin = {
     version: version,
     install: install,
+    // components
     TheUdnLogo: TheUdnLogo,
     TheMenu: TheMenu,
     SvgInlineResource: SvgInlineResource,
-    SvgSymbol: SvgSymbol
+    SvgSymbol: SvgSymbol,
+    // directives
+    inview: inview,
+    lockscroll: lockscroll,
+    // filters
+    numeric: numeric,
+    percentage: percentage
   };
 
+  // auto install plugin in browser environment
   var runtimeVue = null;
   if (typeof window !== 'undefined') {
     runtimeVue = window.Vue || null;
@@ -897,6 +910,19 @@
     runtimeVue.use(plugin);
   }
 
-  return plugin;
+  exports.SvgInlineResource = SvgInlineResource;
+  exports.SvgSymbol = SvgSymbol;
+  exports.TheMenu = TheMenu;
+  exports.TheUdnLogo = TheUdnLogo;
+  exports.default = plugin;
+  exports.install = install;
+  exports.inview = inview;
+  exports.lockscroll = lockscroll;
+  exports.numeric = numeric;
+  exports.percentage = percentage;
+  exports.version = version;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
+//# sourceMappingURL=udn-election2020-shared-lib.umd.js.map

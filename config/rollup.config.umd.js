@@ -10,7 +10,7 @@ const output = {
   name: pkgName.replace(/-([a-z])/g, (g) => g[1].toUpperCase()),
   format,
   file,
-  exports: 'default'
+  exports: 'named'
 }
 
 const config = Object.assign({}, base, {

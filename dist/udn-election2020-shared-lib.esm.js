@@ -1,5 +1,5 @@
 /*!
- * udn-election2020-shared-lib v0.0.2
+ * udn-election2020-shared-lib v0.0.3
  * @license MIT
  * https://github.com/tenthree/udn-election2020-shared-lib
  */
@@ -837,7 +837,7 @@ var percentage = function (value) {
   return format$1(value)
 };
 
-var version = '0.0.2';
+var version = 'v0.0.3';
 
 var namespace = '';
 
@@ -860,6 +860,8 @@ function registerFilters (Vue, filters) {
 }
 
 function install (Vue, options) {
+  if ( options === void 0 ) options = {};
+
   if (install.installed) {
     return
   }
@@ -867,20 +869,31 @@ function install (Vue, options) {
   Vue.device = Vue.prototype.$device = device;
   Vue.inApp = Vue.prototype.$inApp = new DetectInApp(window.navigator.userAgent);
   Vue.ga = Vue.prototype.$ga = ga;
-  registerComponents(Vue, [ TheUdnLogo, TheMenu ]);
-  registerDirectives(Vue, [ inview, lockscroll ]);
-  registerFilters(Vue, [ numeric, percentage ]);
+  var register = options.register; if ( register === void 0 ) register = true;
+  if (register) {
+    registerComponents(Vue, [ TheUdnLogo, TheMenu, SvgInlineResource, SvgSymbol ]);
+    registerDirectives(Vue, [ inview, lockscroll ]);
+    registerFilters(Vue, [ numeric, percentage ]);
+  }
 }
 
 var plugin = {
   version: version,
   install: install,
+  // components
   TheUdnLogo: TheUdnLogo,
   TheMenu: TheMenu,
   SvgInlineResource: SvgInlineResource,
-  SvgSymbol: SvgSymbol
+  SvgSymbol: SvgSymbol,
+  // directives
+  inview: inview,
+  lockscroll: lockscroll,
+  // filters
+  numeric: numeric,
+  percentage: percentage
 };
 
+// auto install plugin in browser environment
 var runtimeVue = null;
 if (typeof window !== 'undefined') {
   runtimeVue = window.Vue || null;
@@ -892,3 +905,5 @@ if (runtimeVue) {
 }
 
 export default plugin;
+export { SvgInlineResource, SvgSymbol, TheMenu, TheUdnLogo, install, inview, lockscroll, numeric, percentage, version };
+//# sourceMappingURL=udn-election2020-shared-lib.esm.js.map

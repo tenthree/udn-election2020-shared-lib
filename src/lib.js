@@ -16,7 +16,7 @@ import lockscroll from './directives/lockscroll'
 import numeric from './filters/numeric'
 import percentage from './filters/percentage'
 
-const version = '#{VERSION}'
+const version = 'v#{VERSION}'
 
 const namespace = ''
 
@@ -32,7 +32,7 @@ function registerFilters (Vue, filters = []) {
   filters.forEach(filter => Vue.filter(`${namespace}${filter.name}`, filter))
 }
 
-function install (Vue, options) {
+function install (Vue, options = {}) {
   if (install.installed) {
     return
   }
@@ -40,20 +40,31 @@ function install (Vue, options) {
   Vue.device = Vue.prototype.$device = device
   Vue.inApp = Vue.prototype.$inApp = new DetectInApp(window.navigator.userAgent)
   Vue.ga = Vue.prototype.$ga = ga
-  registerComponents(Vue, [ TheUdnLogo, TheMenu ])
-  registerDirectives(Vue, [ inview, lockscroll ])
-  registerFilters(Vue, [ numeric, percentage ])
+  const { register = true } = options
+  if (register) {
+    registerComponents(Vue, [ TheUdnLogo, TheMenu, SvgInlineResource, SvgSymbol ])
+    registerDirectives(Vue, [ inview, lockscroll ])
+    registerFilters(Vue, [ numeric, percentage ])
+  }
 }
 
 const plugin = {
   version,
   install,
+  // components
   TheUdnLogo,
   TheMenu,
   SvgInlineResource,
-  SvgSymbol
+  SvgSymbol,
+  // directives
+  inview,
+  lockscroll,
+  // filters
+  numeric,
+  percentage
 }
 
+// auto install plugin in browser environment
 let runtimeVue = null
 if (typeof window !== 'undefined') {
   runtimeVue = window.Vue || null
@@ -64,4 +75,22 @@ if (runtimeVue) {
   runtimeVue.use(plugin)
 }
 
+// export named
+export {
+  version,
+  install,
+  // components
+  TheUdnLogo,
+  TheMenu,
+  SvgInlineResource,
+  SvgSymbol,
+  // directives
+  inview,
+  lockscroll,
+  // filters
+  numeric,
+  percentage
+}
+
+// export default
 export default plugin
