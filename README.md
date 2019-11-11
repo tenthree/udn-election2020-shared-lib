@@ -9,6 +9,42 @@
 npm install @tenthree/udn-election2020-shared-lib
 ```
 
+### components
+
+* TheMenu
+
+```js
+props: {
+  // 專案ID
+  projectId: { type: String, required: true },
+  // 專案正式網址
+  projectUrl: { type: String, required: true },
+  // 顯示標題, 格式為 "看懂2020 - 專案名稱"
+  title: { type: String, default: '' },
+  // 更換漢堡按鈕顏色 (選填)
+  hamburgerColor: { type: String },
+  // 自訂分享網址 (選填)
+  shareUrl: { type: String, default: '' },
+  // 自訂分享文字 (選填)
+  shareText: { type: String, default: '' }
+}
+```
+
+* TheUdnLogo
+
+```js
+props: {
+  // 連結網址
+  link: { type: String, default: '.' },
+  // 連結標題
+  title: { type: String, default: '聯合報' },
+  // 連結目標 (選填)
+  target: { type: String, default: '_blank' },
+  // 更換 Logo 顏色 (選填)
+  color: { type: String, default: '#2E2E2E' }
+}
+```
+
 ### example
 
 * main.js
