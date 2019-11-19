@@ -1,5 +1,5 @@
 /*!
- * udn-election2020-shared-lib v0.0.6
+ * udn-election2020-shared-lib v0.0.7
  * @license MIT
  * https://github.com/tenthree/udn-election2020-shared-lib
  */
@@ -735,7 +735,7 @@ var inview = {
   }
 };
 
-var ellipsis = function (text, maxLen) {
+var filter = function (text, maxLen) {
   if ( maxLen === void 0 ) maxLen = 95;
 
   var len = text.length;
@@ -745,7 +745,12 @@ var ellipsis = function (text, maxLen) {
   return text
 };
 
-ellipsis.name = 'ellipsis';
+var name = 'ellipsis';
+
+var ellipsis = {
+  filter: filter,
+  name: name
+};
 
 var regexp = /(\d)(?=(\d{3})+(?!\d))/g;
 
@@ -759,30 +764,40 @@ var format = function (num) {
   return num.substr(0, point).replace(regexp, '$1,') + num.substr(point)
 };
 
-var numeric = function (value) {
+var filter$1 = function (value) {
   if (isNaN(value)) {
     return value
   }
   return format(value)
 };
 
-numeric.name = 'numeric';
+var name$1 = 'numeric';
+
+var numeric = {
+  filter: filter$1,
+  name: name$1
+};
 
 var format$1 = function (num) {
   num = Number(num * 100).toFixed(2);
   return (num + "%")
 };
 
-var percentage = function (value) {
+var filter$2 = function (value) {
   if (isNaN(value)) {
     return value
   }
   return format$1(value)
 };
 
-percentage.name = 'percentage';
+var name$2 = 'percentage';
 
-var version = 'v0.0.6';
+var percentage = {
+  filter: filter$2,
+  name: name$2
+};
+
+var version = 'v0.0.7';
 
 var namespace = '';
 
@@ -801,7 +816,7 @@ function registerDirectives (Vue, directives) {
 function registerFilters (Vue, filters) {
   if ( filters === void 0 ) filters = [];
 
-  filters.forEach(function (filter) { return Vue.filter(("" + namespace + (filter.name)), filter); });
+  filters.forEach(function (filter) { return Vue.filter(("" + namespace + (filter.name)), filter.filter); });
 }
 
 function install (Vue, options) {
