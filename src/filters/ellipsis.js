@@ -1,4 +1,4 @@
-export const ellipsis = function (text, maxLen = 95) {
+const filter = function (text, maxLen = 95) {
   let len = text.length
   if (len > maxLen) {
     return `${text.slice(0, maxLen)}...`
@@ -6,6 +6,9 @@ export const ellipsis = function (text, maxLen = 95) {
   return text
 }
 
-ellipsis.name = 'ellipsis'
+const name = 'ellipsis'
 
-export default ellipsis
+export default {
+  filter,
+  name
+}

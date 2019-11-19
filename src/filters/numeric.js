@@ -10,13 +10,16 @@ const format = function (num) {
   return num.substr(0, point).replace(regexp, '$1,') + num.substr(point)
 }
 
-const numeric = function (value) {
+const filter = function (value) {
   if (isNaN(value)) {
     return value
   }
   return format(value)
 }
 
-numeric.name = 'numeric'
+const name = 'numeric'
 
-export default numeric
+export default {
+  filter,
+  name
+}

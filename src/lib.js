@@ -30,7 +30,7 @@ function registerDirectives (Vue, directives = []) {
 }
 
 function registerFilters (Vue, filters = []) {
-  filters.forEach(filter => Vue.filter(`${namespace}${filter.name}`, filter))
+  filters.forEach(filter => Vue.filter(`${namespace}${filter.name}`, filter.filter))
 }
 
 function install (Vue, options = {}) {

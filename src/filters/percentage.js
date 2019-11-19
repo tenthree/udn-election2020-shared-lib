@@ -3,13 +3,16 @@ const format = function (num) {
   return `${num}%`
 }
 
-const percentage = function (value) {
+const filter = function (value) {
   if (isNaN(value)) {
     return value
   }
   return format(value)
 }
 
-percentage.name = 'percentage'
+const name = 'percentage'
 
-export default percentage
+export default {
+  filter,
+  name
+}
