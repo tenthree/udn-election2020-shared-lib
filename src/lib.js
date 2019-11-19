@@ -13,6 +13,7 @@ import inview from './directives/inview'
 import lockscroll from './directives/lockscroll'
 
 // filters
+import ellipsis from './filters/ellipsis'
 import numeric from './filters/numeric'
 import percentage from './filters/percentage'
 
@@ -44,7 +45,7 @@ function install (Vue, options = {}) {
   if (register) {
     registerComponents(Vue, [ TheUdnLogo, TheMenu, SvgInlineResource, SvgSymbol ])
     registerDirectives(Vue, [ inview, lockscroll ])
-    registerFilters(Vue, [ numeric, percentage ])
+    registerFilters(Vue, [ ellipsis, numeric, percentage ])
   }
 }
 

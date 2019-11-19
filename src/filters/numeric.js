@@ -17,4 +17,6 @@ const numeric = function (value) {
   return format(value)
 }
 
+numeric.name = 'numeric'
+
 export default numeric

@@ -6,4 +6,6 @@ export const ellipsis = function (text, maxLen = 95) {
   return text
 }
 
+ellipsis.name = 'ellipsis'
+
 export default ellipsis

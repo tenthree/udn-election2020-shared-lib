@@ -10,4 +10,6 @@ const percentage = function (value) {
   return format(value)
 }
 
+percentage.name = 'percentage'
+
 export default percentage
