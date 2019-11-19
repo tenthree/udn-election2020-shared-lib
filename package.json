@@ -1,6 +1,6 @@
 {
   "name": "@tenthree/udn-election2020-shared-lib",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "vue components shared library for election 2020 topics development",
   "main": "dist/udn-election2020-shared-lib.umd.js",
   "module": "dist/udn-election2020-shared-lib.esm.js",

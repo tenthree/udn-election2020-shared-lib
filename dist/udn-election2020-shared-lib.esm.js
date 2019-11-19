@@ -1,5 +1,5 @@
 /*!
- * udn-election2020-shared-lib v0.0.5
+ * udn-election2020-shared-lib v0.0.6
  * @license MIT
  * https://github.com/tenthree/udn-election2020-shared-lib
  */
@@ -735,6 +735,18 @@ var inview = {
   }
 };
 
+var ellipsis = function (text, maxLen) {
+  if ( maxLen === void 0 ) maxLen = 95;
+
+  var len = text.length;
+  if (len > maxLen) {
+    return ((text.slice(0, maxLen)) + "...")
+  }
+  return text
+};
+
+ellipsis.name = 'ellipsis';
+
 var regexp = /(\d)(?=(\d{3})+(?!\d))/g;
 
 var format = function (num) {
@@ -754,6 +766,8 @@ var numeric = function (value) {
   return format(value)
 };
 
+numeric.name = 'numeric';
+
 var format$1 = function (num) {
   num = Number(num * 100).toFixed(2);
   return (num + "%")
@@ -766,7 +780,9 @@ var percentage = function (value) {
   return format$1(value)
 };
 
-var version = 'v0.0.5';
+percentage.name = 'percentage';
+
+var version = 'v0.0.6';
 
 var namespace = '';
 
@@ -802,7 +818,7 @@ function install (Vue, options) {
   if (register) {
     registerComponents(Vue, [ TheUdnLogo, TheMenu, SvgInlineResource, SvgSymbol ]);
     registerDirectives(Vue, [ inview, lockscroll ]);
-    registerFilters(Vue, [ numeric, percentage ]);
+    registerFilters(Vue, [ ellipsis, numeric, percentage ]);
   }
 }
 
