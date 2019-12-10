@@ -1,5 +1,5 @@
 /*!
- * udn-election2020-shared-lib v0.0.7
+ * udn-election2020-shared-lib v0.0.8
  * @license MIT
  * https://github.com/tenthree/udn-election2020-shared-lib
  */
@@ -803,7 +803,7 @@
     name: name$2
   };
 
-  var version = 'v0.0.7';
+  var version = 'v0.0.8';
 
   var namespace = '';
 

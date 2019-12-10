@@ -1,6 +1,6 @@
 {
   "name": "@tenthree/udn-election2020-shared-lib",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "vue components shared library for election 2020 topics development",
   "main": "dist/udn-election2020-shared-lib.umd.js",
   "module": "dist/udn-election2020-shared-lib.esm.js",
@@ -61,6 +61,7 @@
   },
   "dependencies": {
     "current-device": "^0.9.1",
-    "detect-inapp": "^1.4.0"
+    "detect-inapp": "^1.4.0",
+    "serialize-javascript": "^2.1.2"
   }
 }
